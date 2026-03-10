@@ -21,6 +21,12 @@ Backend skeleton for the scikit-learn regression service described in `PLAN.md`.
 - `POST /predict` accepts a `ticker` + optional lookback days and returns a prediction skeleton.
 - `GET /history/{ticker}` surfaces the normalized price history plus feature context.
 
+## Testing
+
+1. Keep the server running and use `curl http://127.0.0.1:8000/healthz` to verify the process is listening.
+2. Call `curl -X POST http://127.0.0.1:8000/predict -H "Content-Type: application/json" -d '{"ticker":"NVDA"}'` to see the stub prediction response.
+3. Hit `curl http://127.0.0.1:8000/history/NVDA` to confirm history + feature context serialization.
+
 ## Next steps
 
 - Wire ingestion to the nightly Postgres snapshot and Yahoo Finance API.
